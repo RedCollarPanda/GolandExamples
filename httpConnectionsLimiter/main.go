@@ -1,9 +1,9 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"time"
-	"log"
 )
 
 type limitHandler struct {
@@ -41,21 +41,19 @@ func (h *limitHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-
 func main() {
 
-	mux := http.NewServeMux();
-	handlerImpl := NewLimitHandler(10, newHandlerImpl());
-
+	mux := http.NewServeMux()
+	handlerImpl := NewLimitHandler(10, newHandlerImpl())
 
 	mux.Handle("/test", handlerImpl)
-	server := http.Server {
-		Addr:	":8080",
-		Handler:	mux,
-		ReadTimeout: 5 * time.Second,
+	server := http.Server{
+		Addr:         ":8080",
+		Handler:      mux,
+		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 5 * time.Second,
 	}
 
-	log.Println(server.ListenAndServe());
+	log.Println(server.ListenAndServe())
 
 }

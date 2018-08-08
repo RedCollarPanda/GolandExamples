@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
+	"log"
 	"net/http"
 	"time"
-	"log"
-	"fmt"
 )
 
 type limitHandler struct {
@@ -59,19 +59,19 @@ func panicMiddlewareHttp(next http.Handler) http.Handler {
 
 func main() {
 
-	mux := http.NewServeMux();
-	handlerImpl := NewLimitHandler(10, newHandlerImpl());
+	mux := http.NewServeMux()
+	handlerImpl := NewLimitHandler(10, newHandlerImpl())
 
-	panicWrapper := panicMiddlewareHttp(handlerImpl);
+	panicWrapper := panicMiddlewareHttp(handlerImpl)
 
 	mux.Handle("/panic", panicWrapper)
-	server := http.Server {
-		Addr:	":8080",
-		Handler:	mux,
-		ReadTimeout: 5 * time.Second,
+	server := http.Server{
+		Addr:         ":8080",
+		Handler:      mux,
+		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 5 * time.Second,
 	}
 
-	log.Println(server.ListenAndServe());
+	log.Println(server.ListenAndServe())
 
 }
