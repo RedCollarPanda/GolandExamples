@@ -44,7 +44,7 @@ func (h *limitHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 func main() {
 
 	mux := http.NewServeMux()
-	handlerImpl := NewLimitHandler(10, newHandlerImpl())
+	handlerImpl := NewLimitHandler(100, newHandlerImpl())
 
 	mux.Handle("/test", handlerImpl)
 	server := http.Server{
