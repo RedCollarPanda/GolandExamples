@@ -26,10 +26,6 @@ func handleMessages(bundle string) string {
 
 func run_consumer() {
 
-	//conn, err := amqp.Dial(cfg.Section_rabbit.RabbitUrl)
-	//failOnError(err, "Failed to connect to RabbitMQ")
-	//defer conn.Close()
-
 	ch, err := globalConn.Channel()
 	failOnError(err, "Failed to open a channel")
 	defer ch.Close()
