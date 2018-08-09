@@ -1,0 +1,3 @@
+[section-redis]
+RedisUrl = localhost:6379
+RedisQueue = test-channel
