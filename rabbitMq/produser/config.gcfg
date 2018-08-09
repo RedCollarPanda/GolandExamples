@@ -1,0 +1,7 @@
+[section-basic]
+Type = message_send
+IP = 127.0.0.1
+Port = :8080
+[section-rabbit]
+RabbitUrl = amqp://localhost:5672/
+RabbitQeue = securechat_msg_in
