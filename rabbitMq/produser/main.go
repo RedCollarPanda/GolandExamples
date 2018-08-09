@@ -150,7 +150,6 @@ func publishMessages(payload string) string {
 	failOnError(err, "Failed to Publish on RabbitMQ")
 	log.Println("Publish ok")
 
-
 	result := "ERROR"
 	for d := range msgs {
 		if corrId == d.CorrelationId {
@@ -216,7 +215,7 @@ func main() {
 	} else {
 
 		log.Println("No rabbitmq configuration found.")
-		return;
+		return
 	}
 
 	mux := http.NewServeMux()
