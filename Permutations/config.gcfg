@@ -1,0 +1,3 @@
+[basic]
+MaxPayloadSize = 16777216
+ListeningPort = :8080

@@ -220,7 +220,7 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	handlr := NewLimitHandler(1000, newTestHandler())
+	handlr := NewLimitHandler(10099, newTestHandler())
 	panicWrapper := panicMiddlewareHttp(handlr)
 
 	mux.Handle("/messages/rabbit", panicWrapper)
